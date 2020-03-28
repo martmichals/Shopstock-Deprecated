@@ -1,4 +1,4 @@
-package com.example.shopstock.ui.dashboard;
+package com.example.shopstock.ui.report;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.shopstock.R;
 
-public class DashboardFragment extends Fragment {
+public class ReportFragment extends Fragment {
 
-    private DashboardViewModel dashboardViewModel;
+    private ReportViewModel reportViewModel;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        dashboardViewModel =
-                ViewModelProviders.of(this).get(DashboardViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        reportViewModel = ViewModelProviders.of(this).get(ReportViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_report, container, false);
+
         final TextView textView = root.findViewById(R.id.text_dashboard);
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        reportViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
