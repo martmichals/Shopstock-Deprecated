@@ -1,4 +1,4 @@
-package com.example.shopstock.ui.home;
+package com.example.shopstock.ui.search;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
