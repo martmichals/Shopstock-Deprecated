@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_mapexplore">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.example.shopstock.ui.search.SearchFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_search" />
+        android:id="@+id/navigation_mapexplore"
+        android:name="com.example.shopstock.ui.mapexplore.MapExploreFragment"
+        android:label="@string/title_mapexplore"
+        tools:layout="@layout/fragment_mapexplore" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_report"
         android:name="com.example.shopstock.ui.report.ReportFragment"
-        android:label="@string/title_dashboard"
+        android:label="@string/title_report"
         tools:layout="@layout/fragment_report" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.shopstock.ui.mapexplore.MapExploreFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_mapexplore" />
+        android:id="@+id/navigation_search"
+        android:name="com.example.shopstock.ui.search.SearchFragment"
+        android:label="@string/title_search"
+        tools:layout="@layout/fragment_search" />
 </navigation>

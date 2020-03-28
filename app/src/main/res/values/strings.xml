@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Shopstock</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_mapexplore">Map</string>
+    <string name="title_report">Report</string>
+    <string name="title_search">Search</string>
     <string name="title_activity_auth_start">AuthStartActivity</string>
 
     <!-- Strings used for fragments in authentication -->
