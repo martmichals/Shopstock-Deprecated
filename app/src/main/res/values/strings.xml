@@ -3,4 +3,23 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_activity_auth_start">AuthStartActivity</string>
+
+    <!-- Strings used for fragments in authentication -->
+    <string name="login_fragment_label">LogIn Fragment</string>
+    <string name="sign_up_fragment_label">SignUp Fragment</string>
+
+    <!-- Log in fragment -->
+    <string name="log_in_button">Log In</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="no_account_ask">Don\'t have an account?</string>
+    <string name="sign_up_button">Sign Up</string>
+
+    <!-- Sign up fragment -->
+    <string name="create_acct_button">Create Account</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="confirm_pass">Confirm Password</string>
+
 </resources>

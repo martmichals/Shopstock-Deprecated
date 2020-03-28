@@ -1,5 +1,6 @@
 package com.example.shopstock;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -26,8 +27,17 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+
+        // Remove with a conditional checking the firebase log in status later on
+       goToAuthScreen();
     }
 
-    // This is a comment
+    // Method to switch from this activity to AuthStart
+    private void goToAuthScreen(){
+        Intent intent = new Intent(this, AuthStartActivity.class);
+        startActivity(intent);
+
+        // Make sure to pop this off of the stack before going into the login screen
+    }
 
 }
