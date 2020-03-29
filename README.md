@@ -9,3 +9,10 @@ in stock.
 File -> New -> Project from Version Control... -> Git <br>
 Copy the following link:<br>
 https://github.com/martmichals/Shopstock
+
+<h2>Credit</h2>
+Server-side code found here:<br>
+https://github.com/martmichals/Shopstock<br>
+  
+Supermarket listings from:<br>
+http://supermarketpage.com/<br>
