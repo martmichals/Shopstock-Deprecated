@@ -32,14 +32,15 @@ public class MainActivity extends AppCompatActivity {
 
         // goToAuthScreen();
 
-        //goRecordTripActivity();
+        // goRecordTripActivity();
     }
 
     private void goToAuthScreen(){
+        // Pop the current activity off of the stack
+        this.finish();
+
         Intent intent = new Intent(this, AuthStartActivity.class);
         startActivity(intent);
-
-        // TODO: Make sure to pop this off of the stack before going into the login screen
     }
 
     private void goRecordTripActivity(){

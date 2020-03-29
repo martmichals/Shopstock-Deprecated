@@ -11,6 +11,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 
 public class RecordTripActivity extends AppCompatActivity {
+    private Store selectedStore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,5 +29,7 @@ public class RecordTripActivity extends AppCompatActivity {
             }
         });
     }
+
+    // TODO: Put relevant API methods here
 
 }
