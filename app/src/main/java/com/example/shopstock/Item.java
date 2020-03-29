@@ -5,7 +5,7 @@ public class Item {
     private String itemName;
     private String itemID;
     private String categoryID;
-    private double confidence;
+    private int confidence;
 
     // TODO: Implement constructor and isInStock method
 

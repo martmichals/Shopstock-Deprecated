@@ -23,7 +23,7 @@ public class MapHandler {
     }
 
     // Method to get stores, sorted by distance to a point
-    public ArrayList<Store> getCoordinateSortedStoresInArea(double[] base_point) {
+    public ArrayList<Store> sortStoresInAreaByDistance(double[] base_point) {
         // TODO: Code to sort stores by distance to the base_point, closest point first
         return null;
     }

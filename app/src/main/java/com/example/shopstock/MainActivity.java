@@ -33,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
         // goToAuthScreen();
 
         // goRecordTripActivity();
+
+        // Neha Execute Space
+        MapHandler mapHandler = new MapHandler();
     }
 
     private void goToAuthScreen(){
