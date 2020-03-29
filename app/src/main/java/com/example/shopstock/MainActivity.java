@@ -28,16 +28,23 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
-        // Remove with a conditional checking the firebase log in status later on
-       goToAuthScreen();
+        // TODO : Add conditional based on auth status
+
+        // goToAuthScreen();
+
+        //goRecordTripActivity();
     }
 
-    // Method to switch from this activity to AuthStart
     private void goToAuthScreen(){
         Intent intent = new Intent(this, AuthStartActivity.class);
         startActivity(intent);
 
-        // Make sure to pop this off of the stack before going into the login screen
+        // TODO: Make sure to pop this off of the stack before going into the login screen
+    }
+
+    private void goRecordTripActivity(){
+        Intent intent = new Intent(this,  RecordTripActivity.class);
+        startActivity(intent);
     }
 
 }
