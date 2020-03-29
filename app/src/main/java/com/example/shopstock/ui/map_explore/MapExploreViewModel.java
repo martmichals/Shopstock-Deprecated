@@ -1,4 +1,4 @@
-package com.example.shopstock.ui.mapexplore;
+package com.example.shopstock.ui.map_explore;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
