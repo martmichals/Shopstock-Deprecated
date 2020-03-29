@@ -5,3 +5,7 @@ United States. Meant to limit unnecessary exposure to others in supermarkets by 
 in stock.
 
 <h2>App Setup</h2>
+<b>Android Studio:</b>
+File -> New -> Project from Version Control... -> Git <br>
+Type in the following link:<br>
+https://github.com/martmichals/Shopstock
