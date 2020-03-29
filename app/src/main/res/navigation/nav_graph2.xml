@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph2"
+    app:startDestination="@id/RecordDataFragment">
+
+    <fragment
+        android:id="@+id/RecordDataFragment"
+        android:name="com.example.shopstock.RecordMeta"
+        android:label="@string/record_meta_title"
+        tools:layout="@layout/fragment_record_meta">
+
+        <action
+            android:id="@+id/action_RecordDataFragment_to_InfinityFragment"
+            app:destination="@id/InfinityFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/InfinityFragment"
+        android:name="com.example.shopstock.InfinityScreen"
+        android:label="@string/infinity_screen_title_nav"
+        tools:layout="@layout/fragment_infinity_screen">
+
+        <action
+            android:id="@+id/action_loop_to_new_q"
+            app:destination="@id/InfinityFragment" />
+    </fragment>
+</navigation>
