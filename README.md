@@ -12,7 +12,7 @@ https://github.com/martmichals/Shopstock
 
 <h2>Credit</h2>
 Server-side code found here:<br>
-https://github.com/martmichals/Shopstock<br>
+https://github.com/martmichals/Shopstock<br><br>
   
 Supermarket listings from:<br>
 http://supermarketpage.com/<br>
