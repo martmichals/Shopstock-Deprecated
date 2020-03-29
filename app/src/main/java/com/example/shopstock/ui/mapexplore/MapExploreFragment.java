@@ -23,13 +23,7 @@ public class MapExploreFragment extends Fragment {
         mapExploreViewModel = ViewModelProviders.of(this).get(MapExploreViewModel.class);
         View root = inflater.inflate(R.layout.fragment_mapexplore, container, false);
 
-        final TextView textView = root.findViewById(R.id.text_notifications);
-        mapExploreViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+
         return root;
     }
 }
