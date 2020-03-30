@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="DatePicker" parent="android:Widget.Material.Light.DatePicker">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:editTextColor">@color/colorAccent</item>
+    </style>
+
+    <style name="TimePicker" parent="@android:style/Widget.Material.TimePicker">
+        <item name="android:numbersTextColor">@color/colorAccent</item>
+        <item name="android:numbersBackgroundColor">@color/colorPrimaryDark</item>
+        <item name="android:numbersSelectorColor">@color/colorPrimary</item>
+        <item name="android:headerBackground">@color/colorPrimary</item>
+    </style>
+</resources>
