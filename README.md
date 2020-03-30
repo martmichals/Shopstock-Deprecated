@@ -12,6 +12,9 @@ File -> New -> Project from Version Control... -> Git <br>
 Copy the following link:<br>
 https://github.com/martmichals/Shopstock
 
+<h2>Core Team</h2>
+Andrew Popovich, Trevor Wong, Neha Agarwal, Martin Michalski
+
 <h2>Credit</h2>
 Server-side code found here:<br>
 https://github.com/CaptnSisko/shopstock_server<br><br>
