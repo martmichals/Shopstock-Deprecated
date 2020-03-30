@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Shopstock</string>
+    <string name="api_map_key"></string>
     <string name="title_map_explore">Map</string>
     <string name="title_report">Report</string>
     <string name="title_search">Search</string>
@@ -31,12 +32,15 @@
 
     <!-- Strings used in data acquisition -->
     <string name="record_meta_title">Record Data</string>
+    <string name="add">ADD</string>
+    <string name="timeQuestion">When was your visit?</string>
+    <string name="stockQuestion">Which items were out of stock?</string>
 
     <string name="infinity_screen_title_nav">Infinity Screen</string>
     <string name="infinity_screen_title">Help us out by answering a few questions!</string>
     <string name="default_prompt">This is a default stock question?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
-    <string name="stop_questions">I do not want to answer any more questions</string>
+    <string name="stop_questions">Exit</string>
 
 </resources>

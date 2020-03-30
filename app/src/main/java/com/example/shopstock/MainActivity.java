@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
                 R.id.navigation_map_explore, R.id.navigation_search)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
         // TODO : Add conditional based on auth status
