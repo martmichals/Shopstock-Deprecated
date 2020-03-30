@@ -7,8 +7,8 @@ United States. Meant to limit unnecessary exposure to others in supermarkets by 
 
 
 <h2>App Setup</h2>
-<b>Android Studio:</b><br><br>
-File -> New -> Project from Version Control... -> Git <br>
+<b>Android Studio:</b><br>
+File -> New -> Project from Version Control... -> Git <br><br>
 Copy the following link:<br>
 https://github.com/martmichals/Shopstock
 
