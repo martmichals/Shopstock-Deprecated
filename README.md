@@ -13,9 +13,9 @@ Copy the following link:<br>
 https://github.com/martmichals/Shopstock
 
 <h2>Dependencies</h2>
-The app requires the use of the Google Maps API; the key which can be obtained here:<br>
-https://developers.google.com/maps/documentation/javascript/get-api-key
-Enter the key into the space in "strings.xml".
+The app requires the use of the Google Maps API; an API key can be obtained here:<br>
+https://developers.google.com/maps/documentation/javascript/get-api-key<br>
+Enter your key into the space in "strings.xml".
 
 <h2>Core Team</h2>
 Andrew Popovich, Trevor Wong, Neha Agarwal, Martin Michalski
