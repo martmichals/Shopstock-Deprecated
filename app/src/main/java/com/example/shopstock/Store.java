@@ -26,13 +26,6 @@ public class Store {
        return null;
     }
 
-    /* Method to send trip data to the server
-        @return: true if the send was successful, false otherwise
-     */
-    public boolean sendTripData(TripData data){
-       return false;
-    }
-
     // END TO DO
 
     // Getter methods
