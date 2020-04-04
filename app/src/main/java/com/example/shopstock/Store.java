@@ -1,5 +1,7 @@
 package com.example.shopstock;
 
+import java.util.HashMap;
+
 public class Store {
     // Attributes of this class
     private String storeID;
@@ -8,7 +10,9 @@ public class Store {
     private double[] coordinates;
     private String[] categoryIDs;
     private String chainID;
-    private Item[] items;
+
+    // Item Name, Confidence
+    private HashMap<String, String> items;
 
     // TODO: Implement the below methods
 

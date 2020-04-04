@@ -33,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupWithNavController(navView, navController);
 
+        /*
+         *  All code below is part of the dev playground
+         */
         // TODO : Add conditional based on auth status
 
         // goToAuthScreen();
@@ -42,23 +45,7 @@ public class MainActivity extends AppCompatActivity {
         // Code to get the stores in an area
         double[] bottom_left = {42.07, -88.157};
         double[] top_right = {42.12, -88.073};
-        ShopstockAPIHandler.updateStoresInArea(bottom_left, top_right, this, new ShopstockListener() {
-            @Override
-            public void onSuccess(String json) {
-                Log.e(TAG, "The request was successful");
 
-                // TODO: Call a method that updates the list of local stores from the updated entry in storage
-            }
-
-            @Override
-            public void onFailure(boolean isConnectionError) {
-               if(isConnectionError){
-                   // TODO : UI Team
-               }else{
-                   // Something with the app is wrong
-               }
-            }
-        });
     }
 
     private void goToAuthScreen(){

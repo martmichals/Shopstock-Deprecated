@@ -27,7 +27,7 @@ public class ShopstockAPIHandler {
                                           final double[] top_right_coordinate,
                                           Context context, final ShopstockListener listener){
         RequestQueue queue = Volley.newRequestQueue(context);
-        String methodRequest = BASE_URL + "get_stores_in_area?lat_1="
+        final String methodRequest = BASE_URL + "get_stores_in_area?lat_1="
                 + String.valueOf(bottom_left_coordinate[0]) + "&lat_2="
                 + String.valueOf(top_right_coordinate[0]) + "&long_1="
                 + String.valueOf(bottom_left_coordinate[1]) + "&long_2="
@@ -49,7 +49,7 @@ public class ShopstockAPIHandler {
                         if(error instanceof TimeoutError || error instanceof NoConnectionError){
                             listener.onFailure(true);
                         }else{
-                            Log.e(TAG, "Error updating the stores in the area from API");
+                            Log.e(TAG, "Error updating the stores in the area from the Shopstock API");
                             listener.onFailure(false);
                         }
                     }
@@ -57,6 +57,38 @@ public class ShopstockAPIHandler {
         queue.add(stringRequest);
     }
 
+    // Method to grab the list of all items from the server
+    // TODO: Fix API-side bug in url assembly
+    public static void updateItemList(Context context, final ShopstockListener listener){
+        RequestQueue queue = Volley.newRequestQueue(context);
+
+        final String methodRequest = BASE_URL + "get_items";
+        Log.d(TAG, "Sending the request: " + methodRequest);
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, methodRequest,
+            new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    listener.onSuccess(response);
+                    Log.d(TAG, "This was the response string: " + response);
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    // Code that runs on request failure
+                    if(error instanceof TimeoutError || error instanceof NoConnectionError){
+                        listener.onFailure(true);
+                    }else{
+                        Log.e(TAG, "Error updating the item list from the Shopstock API");
+                        listener.onFailure(false);
+                    }
+                }
+        });
+    }
+
+
+    /* All the methods used for parsing the json returns of http requests
+     * All return workable class types
+     */
     // Method to parse the updateStoresInArea response string into an array of Stores
     // TODO : NEHA
     public static Store[] parseIntoStores(String json){
