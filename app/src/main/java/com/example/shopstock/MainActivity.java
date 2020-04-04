@@ -46,6 +46,19 @@ public class MainActivity extends AppCompatActivity {
         double[] bottom_left = {42.07, -88.157};
         double[] top_right = {42.12, -88.073};
 
+        // Code for Neha to test
+        ShopstockAPIHandler.updateItemList(this, new ShopstockListener() {
+            @Override
+            public void onSuccess(String json) {
+               ShopstockAPIHandler.parseIntoItems(json);
+            }
+
+            @Override
+            public void onFailure(boolean isConnectionError) {
+
+            }
+        });
+
     }
 
     private void goToAuthScreen(){

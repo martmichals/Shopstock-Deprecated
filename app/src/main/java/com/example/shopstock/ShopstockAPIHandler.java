@@ -95,6 +95,9 @@ public class ShopstockAPIHandler {
         return null;
     }
 
+    // Method to parse the items into a list from JSON
+    public static Item[] parseIntoItems(String json){ return null;}
+
     // Possibly implement this if we want to cache data
     public static Store[] getStoresFromLocal(String path){
         return null;
