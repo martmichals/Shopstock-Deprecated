@@ -1,9 +1,11 @@
 package com.example.shopstock;
 
 // Used for JSON parsing and launching HTTPS requests
+import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
@@ -44,7 +46,12 @@ public class ShopstockAPIHandler {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         // Code that runs on request failure
-                        listener.onFailure(error);
+                        if(error instanceof TimeoutError || error instanceof NoConnectionError){
+                            listener.onFailure(true);
+                        }else{
+                            Log.e(TAG, "Error updating the stores in the area from API");
+                            listener.onFailure(false);
+                        }
                     }
                 });
         queue.add(stringRequest);

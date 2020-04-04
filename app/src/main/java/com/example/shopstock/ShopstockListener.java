@@ -4,5 +4,5 @@ import com.android.volley.VolleyError;
 
 public interface ShopstockListener {
     void onSuccess(String json);
-    void onFailure(VolleyError error);
+    void onFailure(boolean isConnectionError);
 }

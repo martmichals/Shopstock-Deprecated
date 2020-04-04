@@ -51,13 +51,12 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(VolleyError error) {
-                if(error instanceof TimeoutError || error instanceof NoConnectionError){
-                    // Code to execute knowing connection failed
-                    // TODO : UI Team, do something so that the user knows that they need a connection
-                }else{
-                    Log.e(TAG, "Error updating the stores in the area from API");
-                }
+            public void onFailure(boolean isConnectionError) {
+               if(isConnectionError){
+                   // TODO : UI Team
+               }else{
+                   // Something with the app is wrong
+               }
             }
         });
     }
