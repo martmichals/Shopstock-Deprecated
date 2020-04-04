@@ -4,17 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.NoConnectionError;
-import com.android.volley.TimeoutError;
-import com.android.volley.VolleyError;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -50,12 +46,14 @@ public class MainActivity extends AppCompatActivity {
         ShopstockAPIHandler.updateItemList(this, new ShopstockListener() {
             @Override
             public void onSuccess(String json) {
-               ShopstockAPIHandler.parseIntoItems(json);
+               Item[] items = ShopstockAPIHandler.parseIntoItems(json);
+               Log.i(TAG, items[1].toString());
+               Log.i(TAG, "yes");
             }
 
             @Override
             public void onFailure(boolean isConnectionError) {
-
+                Log.e(TAG, "Connection Error");
             }
         });
 

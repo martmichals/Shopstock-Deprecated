@@ -1,6 +1,9 @@
 package com.example.shopstock;
 
 // Used for JSON parsing and launching HTTPS requests
+import android.content.Context;
+import android.util.Log;
+
 import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -10,9 +13,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 // Other required classes
-import android.content.Context;
-import android.util.Log;
 
 /* Class that facilitates interaction with the Shopstock API
  * Class methods are all static
@@ -91,12 +96,35 @@ public class ShopstockAPIHandler {
      */
     // Method to parse the updateStoresInArea response string into an array of Stores
     // TODO : NEHA
-    public static Store[] parseIntoStores(String json){
+    public static Store[] parseIntoStores(String json) {
         return null;
     }
 
     // Method to parse the items into a list from JSON
-    public static Item[] parseIntoItems(String json){ return null;}
+    //returns null if list of stores is empty/information incomplete
+    public static Item[] parseIntoItems(String json) {
+
+        try {
+            JSONObject obj = new JSONObject(json);
+            JSONArray arr = obj.getJSONObject("items").names();
+            Item[] items = new Item[arr.length()]; //return array
+            for (int i = 0; i < arr.length(); i++) {
+                String item_id = arr.getString(i);
+                JSONObject item = obj.getJSONObject("items").getJSONObject(item_id);
+
+                int itemID = Integer.parseInt(item_id);
+                String itemName = item.getString("name");
+                int categoryID = item.getInt("item-category");
+
+                items[i] = new Item(itemID, itemName, categoryID);
+            }
+            Log.i(TAG, "good");
+            return items;
+        } catch (JSONException e) {
+            Log.e(TAG, "Could not find list of stores");
+            return null;
+        }
+    }
 
     // Possibly implement this if we want to cache data
     public static Store[] getStoresFromLocal(String path){
