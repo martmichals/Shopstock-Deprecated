@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph2"
-    app:startDestination="@id/RecordDataFragment">
+    app:startDestination="@id/ViewStoreInformation">
 
     <fragment
         android:id="@+id/RecordDataFragment"
@@ -24,5 +24,15 @@
         <action
             android:id="@+id/action_loop_to_new_q"
             app:destination="@id/InfinityFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ViewStoreInformation"
+        android:name="com.example.shopstock.ViewStoreInfoFragment"
+        android:label="view_store_information_fragment"
+        tools:layout="@layout/view_store_info_fragment" >
+
+        <action
+            android:id="@+id/action_ViewStoreInfoFragment_to_RecordMetaFragment"
+            app:destination="@id/RecordDataFragment"/>
     </fragment>
 </navigation>

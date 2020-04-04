@@ -43,4 +43,7 @@
     <string name="no">No</string>
     <string name="stop_questions">Exit</string>
 
+    <!-- Store information view fragment -->
+    <string name="go_to_report">Record Trip</string>
+
 </resources>

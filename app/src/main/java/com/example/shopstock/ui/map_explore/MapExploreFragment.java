@@ -14,13 +14,11 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.shopstock.R;
-import com.example.shopstock.RecordTripActivity;
-import com.google.android.gms.maps.CameraUpdate;
+import com.example.shopstock.StoreInfoInteractActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -66,7 +64,7 @@ public class MapExploreFragment extends Fragment {
                     googleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
                         @Override
                         public void onInfoWindowClick(Marker marker) {
-                            Intent intent = new Intent(getActivity(), RecordTripActivity.class);
+                            Intent intent = new Intent(getActivity(), StoreInfoInteractActivity.class);
                             intent.putExtra("storeName",  marker.getTitle());
                             startActivity(intent);
                         }
