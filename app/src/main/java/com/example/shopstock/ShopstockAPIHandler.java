@@ -35,9 +35,10 @@ public class ShopstockAPIHandler {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        // Code that runs on request success
-                        listener.onSuccess();
+                        // TODO : Save the data pulled locally
 
+                        // Code that runs on request success
+                        listener.onSuccess(response);
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -47,5 +48,16 @@ public class ShopstockAPIHandler {
                     }
                 });
         queue.add(stringRequest);
+    }
+
+    // Method to parse the updateStoresInArea response string into an array of Stores
+    // TODO : NEHA
+    public static Store[] parseIntoStores(String json){
+        return null;
+    }
+
+    // Possibly implement this if we want to cache data
+    public static Store[] getStoresFromLocal(String path){
+        return null;
     }
 }

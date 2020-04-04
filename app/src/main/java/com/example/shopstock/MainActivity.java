@@ -44,10 +44,10 @@ public class MainActivity extends AppCompatActivity {
         double[] top_right = {42.12, -88.073};
         ShopstockAPIHandler.updateStoresInArea(bottom_left, top_right, this, new ShopstockListener() {
             @Override
-            public void onSuccess() {
-               Log.e(TAG, "The request was successful");
+            public void onSuccess(String json) {
+                Log.e(TAG, "The request was successful");
 
-               // TODO: Call a method that updates the list of local stores from the updated entry in storage
+                // TODO: Call a method that updates the list of local stores from the updated entry in storage
             }
 
             @Override
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                     // Code to execute knowing connection failed
                     // TODO : UI Team, do something so that the user knows that they need a connection
                 }else{
-                   Log.e(TAG, "Error updating the stores in the area from API");
+                    Log.e(TAG, "Error updating the stores in the area from API");
                 }
             }
         });
