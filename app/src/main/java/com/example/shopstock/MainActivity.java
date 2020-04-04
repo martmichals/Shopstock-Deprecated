@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         double[] top_right = {42.12, -88.073};
 
         // Code for Neha to test
+        Log.d(TAG, "Launching a request to update the item list");
         ShopstockAPIHandler.updateItemList(this, new ShopstockListener() {
             @Override
             public void onSuccess(String json) {

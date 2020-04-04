@@ -19,13 +19,23 @@ import org.json.JSONObject;
 
 // Other required classes
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
+
 /* Class that facilitates interaction with the Shopstock API
  * Class methods are all static
- * All methods are asynchronous
+ * Methods with calls to the API are asynchronous
  */
 public class ShopstockAPIHandler {
     private static final String BASE_URL = "https://shopstock.live/api/";
     private static final String TAG = "ShopstockAPIHandler";
+    private static final String ITEMS_FILENAME = "Items.json";
 
     // Method to grab all the information for stores in an area
     public static void updateStoresInArea(final double[] bottom_left_coordinate,
@@ -68,13 +78,11 @@ public class ShopstockAPIHandler {
         RequestQueue queue = Volley.newRequestQueue(context);
 
         final String methodRequest = BASE_URL + "get_items";
-        Log.d(TAG, "Sending the request: " + methodRequest);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, methodRequest,
             new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
                     listener.onSuccess(response);
-                    Log.d(TAG, "This was the response string: " + response);
                 }
             }, new Response.ErrorListener() {
                 @Override
@@ -88,6 +96,7 @@ public class ShopstockAPIHandler {
                     }
                 }
         });
+        queue.add(stringRequest);
     }
 
 
@@ -126,8 +135,56 @@ public class ShopstockAPIHandler {
         }
     }
 
-    // Possibly implement this if we want to cache data
-    public static Store[] getStoresFromLocal(String path){
-        return null;
+    /*
+        Get the items list from local storage
+        Returns null if the file was not found
+     */
+    public static Item[] getItemsFromLocal(Context context){
+        // Setup of all things needed to read the file
+        FileInputStream inputStream;
+        InputStreamReader inputStreamReader;
+        try {
+            inputStream = context.openFileInput(ITEMS_FILENAME);
+            inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+        }catch(FileNotFoundException e){
+            Log.e(TAG, "The items file was not found");
+            return null;
+        }catch (UnsupportedEncodingException e){
+            Log.e(TAG, "Error. Unsupported character encoding");
+            return null;
+        }
+        StringBuilder stringBuilder = new StringBuilder();
+
+        // Reading the contents of the json file
+        String json;
+        try{
+            BufferedReader reader = new BufferedReader(inputStreamReader);
+            String line = reader.readLine();
+            while (line != null){
+                stringBuilder.append(line).append('\n');
+                line = reader.readLine();
+            }
+        }catch (IOException e){
+            Log.e(TAG, "Error occurred in trying to open the contents of the file");
+            return null;
+        }finally {
+            json = stringBuilder.toString();
+        }
+
+        // Parsing the contents of the JSON file
+        return parseIntoItems(json);
+    }
+
+    /* Save the json for the list of items into local storage
+       Returns true if the save to storage was successful
+     */
+    public static boolean saveItemsToLocal(Context context, String json){
+       try{
+           FileOutputStream fos = context.openFileOutput(ITEMS_FILENAME, Context.MODE_PRIVATE);
+           fos.write(json.getBytes("UTF-8"));
+           return true;
+       }catch(Exception e){
+           return false;
+       }
     }
 }
