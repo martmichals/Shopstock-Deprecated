@@ -111,16 +111,16 @@ public class ShopstockAPIHandler {
                     @Override
                     public void onResponse(String response) {
                         // TODO : Save the data locally
-                        categoryListener.onSuccess(response);
+                        chainListener.onSuccess(response);
                     }
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         if(error instanceof TimeoutError || error instanceof NoConnectionError){
-                           categoryListener.onFailure(true);
+                           chainListener.onFailure(true);
                         }else{
                            Log.e(TAG, "Error updating item categories from the API");
-                           categoryListener.onFailure(false);
+                           chainListener.onFailure(false);
                         }
                     }
                 });
@@ -132,16 +132,16 @@ public class ShopstockAPIHandler {
                     @Override
                     public void onResponse(String response) {
                         // TODO : Invoke the method to save the data locally
-                        chainListener.onSuccess(response);
+                        categoryListener.onSuccess(response);
                     }
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         if(error instanceof TimeoutError || error instanceof NoConnectionError){
-                            chainListener.onFailure(true);
+                            categoryListener.onFailure(true);
                         }else{
                             Log.e(TAG, "Error updating the store chains from the API");
-                            chainListener.onFailure(false);
+                            categoryListener.onFailure(false);
                         }
                     }
                 });

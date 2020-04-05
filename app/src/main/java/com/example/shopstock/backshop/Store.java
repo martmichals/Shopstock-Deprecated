@@ -64,4 +64,5 @@ public class Store {
     // Getter methods
     public String getStoreAddress(){return storeAddress;}
     public String getStoreName(){return storeName;}
+    public double[] getCoordinates(){return coordinates;}
 }
