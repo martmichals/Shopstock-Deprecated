@@ -42,24 +42,6 @@ public class MainActivity extends AppCompatActivity {
 
         // goRecordTripActivity();
 
-        // Code to get the stores in an area
-        double[] bottom_left = {42.07, -88.157};
-        double[] top_right = {42.12, -88.073};
-
-        // Code for Neha to test
-        Log.d(TAG, "Launching a request to update the item list");
-        ShopstockAPIHandler.updateItemList(this, new ShopstockListener() {
-            @Override
-            public void onSuccess(String json) {
-               Item[] items = ShopstockAPIHandler.parseIntoItems(json);
-               Item[] is = LocalDataHandler.getItemsFromLocal(getApplicationContext());
-            }
-
-            @Override
-            public void onFailure(boolean isConnectionError) {
-                Log.e(TAG, "Connection Error");
-            }
-        });
 
     }
 

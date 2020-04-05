@@ -144,15 +144,30 @@ public class ShopstockAPIHandler {
         queue.add(categoryRequest);
     }
 
-    /* All the methods used for parsing the json returns of http requests
-     * All return workable class types
+
+    // All methods for parsing json into workable data types
+
+    /* Method to parse the stores into a list from a JSON String
+       Returns null if the list of stores is empty/information is incomplete
      */
     public static Store[] parseIntoStores(String json) {
         return null;
     }
 
+    /* Method to parse the categories into a list from a JSON String
+       Returns null if the list of categories is empty/information is incomplete
+     */
+    public static void parseIntoCategories(String json) {
+    }
+
+    /* Method to parse the chains into a list from a JSON String
+       Returns null if the list of chains is empty/information is incomplete
+     */
+    public static void parseIntoChains(String json) {
+    }
+
     /* Method to parse the items into a list from a JSON String
-       Returns null if the list of stores is empty/information is incomplete
+       Returns null if the list of items is empty/information is incomplete
      */
     public static Item[] parseIntoItems(String json) {
 
@@ -176,6 +191,5 @@ public class ShopstockAPIHandler {
             return null;
         }
     }
-
 
 }
