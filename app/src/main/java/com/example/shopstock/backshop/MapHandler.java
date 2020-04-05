@@ -4,7 +4,6 @@ import android.content.Context;
 import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 public class MapHandler {
     private static final String TAG = "MapHandler";
