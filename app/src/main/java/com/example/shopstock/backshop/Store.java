@@ -1,4 +1,6 @@
-package com.example.shopstock;
+package com.example.shopstock.backshop;
+
+import com.example.shopstock.backshop.Item;
 
 import java.util.HashMap;
 

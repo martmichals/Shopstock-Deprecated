@@ -1,7 +1,6 @@
 package com.example.shopstock.backshop;
 
 // Imports
-import android.app.VoiceInteractor;
 import android.content.Context;
 import android.util.Log;
 
@@ -13,8 +12,6 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.shopstock.Item;
-import com.example.shopstock.Store;
 
 import org.json.JSONArray;
 import org.json.JSONException;

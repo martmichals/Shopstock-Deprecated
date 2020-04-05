@@ -10,6 +10,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.shopstock.backshop.Item;
 import com.example.shopstock.backshop.LocalDataHandler;
 import com.example.shopstock.backshop.ShopstockAPIHandler;
 import com.example.shopstock.backshop.ShopstockListener;
