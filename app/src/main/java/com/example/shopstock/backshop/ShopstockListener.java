@@ -1,6 +1,4 @@
-package com.example.shopstock;
-
-import com.android.volley.VolleyError;
+package com.example.shopstock.backshop;
 
 public interface ShopstockListener {
     void onSuccess(String json);

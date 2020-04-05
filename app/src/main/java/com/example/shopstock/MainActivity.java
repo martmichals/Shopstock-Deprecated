@@ -10,6 +10,9 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.shopstock.backshop.LocalDataHandler;
+import com.example.shopstock.backshop.ShopstockAPIHandler;
+import com.example.shopstock.backshop.ShopstockListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -48,8 +51,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(String json) {
                Item[] items = ShopstockAPIHandler.parseIntoItems(json);
-               Log.i(TAG, items[1].toString());
-               Log.i(TAG, "yes");
+               Item[] is = LocalDataHandler.getItemsFromLocal(getApplicationContext());
             }
 
             @Override

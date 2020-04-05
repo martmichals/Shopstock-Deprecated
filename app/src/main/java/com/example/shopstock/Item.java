@@ -16,6 +16,7 @@ public class Item {
         categoryID = catID;
         confidence = level;
     }
+
     //specifically for populating lists of items, not connected to stores
     public Item(int iID, String name, int catID) {
         itemID = iID;
@@ -28,7 +29,7 @@ public class Item {
        return false;
     }
 
-    //setter
+    // Setter
     public void setConfidence(double level) {
         confidence = level;
     }
