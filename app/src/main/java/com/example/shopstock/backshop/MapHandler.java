@@ -81,6 +81,10 @@ public class MapHandler {
 
    public ArrayList<Store> getStoresOnScreen(){
         ArrayList<Store> storesOnScreen = new ArrayList<>();
+
+        if(storesInArea == null)
+            return storesOnScreen;
+
         for(Store store: storesInArea){
             double[] storeCoordinates = store.getCoordinates();
             if(storeCoordinates[0] > bottomLeftCoordinateScreen[0] && storeCoordinates[1] > bottomLeftCoordinateScreen[1]

@@ -1,7 +1,6 @@
 package com.example.shopstock.backshop;
 
 // Imports
-
 import android.content.Context;
 import android.util.Log;
 
