@@ -17,7 +17,7 @@ public class Item {
         confidence = conf;
     }
 
-    //specifically for populating lists of items, not connected to stores
+    // Specifically for populating lists of items, not connected to stores
     public Item(int item_ID, String item_Name, int category_ID) {
         itemID = item_ID;
         itemName = item_Name;

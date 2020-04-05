@@ -1,7 +1,6 @@
 package com.example.shopstock.backshop;
 
-import com.example.shopstock.backshop.Item;
-
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class Store {
@@ -41,6 +40,26 @@ public class Store {
     }
 
     // END TO DO
+
+    @Override
+    public boolean equals(Object o) {
+        if (o==this) { // Self check
+            return true;
+        }
+        //false if not instance of Store. note null instanceof also returns false
+        if (!(o instanceof Store)) {
+            return false;
+        }
+        Store s = (Store) o;
+
+        return storeID == s.storeID
+                && storeName != null && storeName.equals(s.storeName)
+                && storeName != null && storeAddress.equals(s.storeAddress)
+                && Arrays.equals(coordinates, s.coordinates)
+                && Arrays.equals(categoryIDs, s.categoryIDs)
+                && chainID == chainID
+                && items != null && items.equals(s.items);
+    }
 
     // Getter methods
     public String getStoreAddress(){return storeAddress;}
