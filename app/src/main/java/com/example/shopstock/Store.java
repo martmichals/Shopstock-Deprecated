@@ -12,12 +12,20 @@ public class Store {
     private int chainID;
 
     // Item Name, Confidence
-    private HashMap<String, String> items;
+    private HashMap<String, String> items; // Confidence will need to be converted to double
 
     // TODO: Implement the below methods
 
     // Constructor
-    public Store(){
+    // Initializes all Store attributes
+    public Store(int store_ID, String name, String address, double[] lat_long, int[] category_IDs, int chain_ID, HashMap<String, String> item_conf) {
+        storeID = store_ID;
+        storeName = name;
+        storeAddress = address;
+        coordinates = lat_long;
+        categoryIDs = category_IDs;
+        chainID = chain_ID;
+        items = item_conf;
     }
 
     // Get the distance from the store to a set of coordinates

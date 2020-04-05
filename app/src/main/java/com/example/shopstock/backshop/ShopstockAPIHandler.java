@@ -1,7 +1,7 @@
 package com.example.shopstock.backshop;
 
 // Imports
-import android.app.VoiceInteractor;
+
 import android.content.Context;
 import android.util.Log;
 
@@ -19,6 +19,8 @@ import com.example.shopstock.Store;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashMap;
 
 /* Class that facilitates interaction with the Shopstock API
  * Class methods are all static
@@ -151,7 +153,32 @@ public class ShopstockAPIHandler {
      * All return workable class types
      */
     public static Store[] parseIntoStores(String json) {
-        return null;
+        try {
+            JSONObject obj = new JSONObject(json);
+            JSONArray arr = obj.getJSONArray("stores"); // stores organized into array in JSON
+            Store[] stores = new Store[arr.length()];
+            for(int i = 0; i < arr.length(); i++) {
+                JSONObject store = arr.getJSONObject(i);
+
+                // Getting Store constructor arguments
+                int storeID = store.getInt("id");
+                String storeName = store.getString("name");
+                String storeAddress = store.getString("address");
+                double[] coordinates = new double[2];
+                coordinates[0] = store.getDouble("lat");
+                coordinates[1] = store.getDouble("long");
+
+                //The following will all need to be adjusted.
+                //int[] categoryIDs = new int[5];
+                //int chainID = store.getInt("store-chain");
+                HashMap<String, String> map;
+                //stores[i] = new Store(storeID, storeName, storeAddress, coordinates, categoryIDs, chainID, map);
+            }
+            return stores;
+        } catch (JSONException e) {
+            Log.e(TAG, "Could not parse json string into store list");
+            return null;
+        }
     }
 
     /* Method to parse the items into a list from a JSON String

@@ -10,18 +10,18 @@ public class Item {
     // TODO: Implement constructor and isInStock method
 
     // Constructors
-    public Item(int iID, String name, int catID, double level) {
-        itemID = iID;
-        itemName = name;
-        categoryID = catID;
-        confidence = level;
+    public Item(int item_ID, String item_Name, int category_ID, double conf) {
+        itemID = item_ID;
+        itemName = item_Name;
+        categoryID = category_ID;
+        confidence = conf;
     }
 
     //specifically for populating lists of items, not connected to stores
-    public Item(int iID, String name, int catID) {
-        itemID = iID;
-        itemName = name;
-        categoryID = catID;
+    public Item(int item_ID, String item_Name, int category_ID) {
+        itemID = item_ID;
+        itemName = item_Name;
+        categoryID = category_ID;
     }
 
     // Method to return whether or not the given item is in stock or not
@@ -34,8 +34,9 @@ public class Item {
         confidence = level;
     }
 
+    // to string method for testing
     public String toString() {
-        return itemID + " \n" + itemName + " \n" + categoryID + " \n";
+        return itemName + ": ID " + itemID + ", Category " + categoryID + " \n";
     }
 
 }
