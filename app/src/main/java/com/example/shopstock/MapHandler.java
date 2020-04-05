@@ -1,5 +1,7 @@
 package com.example.shopstock;
 
+import com.example.shopstock.backshop.Store;
+
 import java.util.ArrayList;
 
 public class MapHandler {

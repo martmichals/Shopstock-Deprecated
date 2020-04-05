@@ -1,4 +1,4 @@
-package com.example.shopstock;
+package com.example.shopstock.backshop;
 
 public class Item {
     // Item attributes

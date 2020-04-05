@@ -1,7 +1,6 @@
 package com.example.shopstock.backshop;
 
 // Imports
-
 import android.content.Context;
 import android.util.Log;
 
@@ -13,14 +12,10 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.shopstock.Item;
-import com.example.shopstock.Store;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.HashMap;
 
 /* Class that facilitates interaction with the Shopstock API
  * Class methods are all static
@@ -149,40 +144,30 @@ public class ShopstockAPIHandler {
         queue.add(categoryRequest);
     }
 
-    /* All the methods used for parsing the json returns of http requests
-     * All return workable class types
+
+    // All methods for parsing json into workable data types
+
+    /* Method to parse the stores into a list from a JSON String
+       Returns null if the list of stores is empty/information is incomplete
      */
     public static Store[] parseIntoStores(String json) {
-        try {
-            JSONObject obj = new JSONObject(json);
-            JSONArray arr = obj.getJSONArray("stores"); // stores organized into array in JSON
-            Store[] stores = new Store[arr.length()];
-            for(int i = 0; i < arr.length(); i++) {
-                JSONObject store = arr.getJSONObject(i);
+        return null;
+    }
 
-                // Getting Store constructor arguments
-                int storeID = store.getInt("id");
-                String storeName = store.getString("name");
-                String storeAddress = store.getString("address");
-                double[] coordinates = new double[2];
-                coordinates[0] = store.getDouble("lat");
-                coordinates[1] = store.getDouble("long");
+    /* Method to parse the categories into a list from a JSON String
+       Returns null if the list of categories is empty/information is incomplete
+     */
+    public static void parseIntoCategories(String json) {
+    }
 
-                //The following will all need to be adjusted.
-                //int[] categoryIDs = new int[5];
-                //int chainID = store.getInt("store-chain");
-                HashMap<String, String> map;
-                //stores[i] = new Store(storeID, storeName, storeAddress, coordinates, categoryIDs, chainID, map);
-            }
-            return stores;
-        } catch (JSONException e) {
-            Log.e(TAG, "Could not parse json string into store list");
-            return null;
-        }
+    /* Method to parse the chains into a list from a JSON String
+       Returns null if the list of chains is empty/information is incomplete
+     */
+    public static void parseIntoChains(String json) {
     }
 
     /* Method to parse the items into a list from a JSON String
-       Returns null if the list of stores is empty/information is incomplete
+       Returns null if the list of items is empty/information is incomplete
      */
     public static Item[] parseIntoItems(String json) {
 
@@ -206,6 +191,5 @@ public class ShopstockAPIHandler {
             return null;
         }
     }
-
 
 }

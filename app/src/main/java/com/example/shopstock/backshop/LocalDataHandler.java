@@ -3,8 +3,6 @@ package com.example.shopstock.backshop;
 import android.content.Context;
 import android.util.Log;
 
-import com.example.shopstock.Item;
-
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
