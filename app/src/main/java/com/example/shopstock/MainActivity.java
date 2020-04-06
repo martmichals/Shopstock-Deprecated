@@ -13,7 +13,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
-    private MapHandler mapHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupWithNavController(navView, navController);
 
-        mapHandler = new MapHandler();
-
         /*
          *  All code below is part of the dev playground
          */
@@ -41,10 +38,6 @@ public class MainActivity extends AppCompatActivity {
         // goRecordTripActivity();
 
 
-    }
-
-    public MapHandler getMapHandler(){
-        return mapHandler;
     }
 
     private void goToAuthScreen(){
