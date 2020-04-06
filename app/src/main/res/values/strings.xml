@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Shopstock</string>
-    <string name="api_map_key"></string>
     <string name="title_map_explore">Map</string>
     <string name="title_report">Report</string>
     <string name="title_search">Search</string>

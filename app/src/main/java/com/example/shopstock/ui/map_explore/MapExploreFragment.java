@@ -76,7 +76,6 @@ public class MapExploreFragment extends Fragment implements  OnMapReadyCallback,
                 @Override
                 public void onInfoWindowClick(Marker marker) {
                     Intent intent = new Intent(getActivity(), StoreInfoInteractActivity.class);
-                    intent.putExtra("storeName",  marker.getTitle());
                     startActivity(intent);
                 }
             });
