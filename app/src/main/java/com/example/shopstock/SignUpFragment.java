@@ -1,5 +1,6 @@
 package com.example.shopstock;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,7 +24,7 @@ public class SignUpFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        view.findViewById(R.id.sign_up_button).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.create_account).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 NavHostFragment.findNavController(SignUpFragment.this)

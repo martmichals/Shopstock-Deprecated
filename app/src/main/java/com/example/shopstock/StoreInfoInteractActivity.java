@@ -12,8 +12,6 @@ public class StoreInfoInteractActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store_info_interact);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
     }
 
     // TODO: Put relevant API methods here

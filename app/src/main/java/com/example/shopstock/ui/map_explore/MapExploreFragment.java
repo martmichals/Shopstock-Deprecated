@@ -3,7 +3,10 @@ package com.example.shopstock.ui.map_explore;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Point;
 import android.os.Bundle;
+import android.os.Debug;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,15 +22,17 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.Projection;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapExploreFragment extends Fragment {
+public class MapExploreFragment extends Fragment implements  OnMapReadyCallback, GoogleMap.OnCameraIdleListener {
 
     private MapExploreViewModel mapExploreViewModel;
     private MapView map;
+    private GoogleMap googleMap;
     private boolean locationPerms = false;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -45,39 +50,41 @@ public class MapExploreFragment extends Fragment {
         map.onCreate(savedInstanceState);
 
         map.onResume();
-        map.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(GoogleMap googleMap) {
-                if (!locationPerms) {
-                   return;
-                }
-
-                googleMap.setMyLocationEnabled(true);
-
-                LatLng[] pins = {new LatLng(41.894996, -87.629224), new LatLng(41.892316, -87.628676), new LatLng(41.893514, -87.626310)};
-                final String[] storeNames = {"Whole Foods", "Jewel Osco", "Trader Joes"};
-                String[] storeStatuses = {"Out of eggs and bread", "In Stock", "Out of toilet paper"};
-                LatLng center = new LatLng(0, 0);
-                for (int i = 0; i < pins.length; i++) {
-                    final String name = storeNames[i];
-                    googleMap.addMarker(new MarkerOptions().position(pins[i]).title(storeNames[i]).snippet(storeStatuses[i]));
-                    googleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
-                        @Override
-                        public void onInfoWindowClick(Marker marker) {
-                            Intent intent = new Intent(getActivity(), StoreInfoInteractActivity.class);
-                            intent.putExtra("storeName",  marker.getTitle());
-                            startActivity(intent);
-                        }
-                    });
-                    center = new LatLng(center.latitude + (pins[i].latitude / pins.length), center.longitude + (pins[i].longitude / pins.length));
-                }
-
-                CameraPosition cameraPosition = new CameraPosition.Builder().target(center).zoom(16).build();
-                googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-            }
-        });
+        map.getMapAsync(this);
 
         return root;
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        if (!locationPerms) {
+            return;
+        }
+
+        this.googleMap = googleMap;
+        googleMap.setOnCameraIdleListener(this);
+        googleMap.setMyLocationEnabled(true);
+
+        LatLng[] pins = {new LatLng(41.894996, -87.629224), new LatLng(41.892316, -87.628676), new LatLng(41.893514, -87.626310)};
+        final String[] storeNames = {"Whole Foods", "Jewel Osco", "Trader Joes"};
+        String[] storeStatuses = {"Out of eggs and bread", "In Stock", "Out of toilet paper"};
+        LatLng center = new LatLng(0, 0);
+        for (int i = 0; i < pins.length; i++) {
+            final String name = storeNames[i];
+            //googleMap.addMarker(new MarkerOptions().position(pins[i]).title(storeNames[i]).snippet(storeStatuses[i]));
+            googleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+                @Override
+                public void onInfoWindowClick(Marker marker) {
+                    Intent intent = new Intent(getActivity(), StoreInfoInteractActivity.class);
+                    intent.putExtra("storeName",  marker.getTitle());
+                    startActivity(intent);
+                }
+            });
+            center = new LatLng(center.latitude + (pins[i].latitude / pins.length), center.longitude + (pins[i].longitude / pins.length));
+        }
+
+        CameraPosition cameraPosition = new CameraPosition.Builder().target(center).zoom(16).build();
+        googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
     }
 
     @Override
@@ -102,5 +109,28 @@ public class MapExploreFragment extends Fragment {
     public void onLowMemory() {
         super.onLowMemory();
         map.onLowMemory();
+    }
+
+    @Override
+    public void onCameraIdle() {
+        Projection projection = googleMap.getProjection();
+        Log.d("LOCATION", projection.toString());
+
+        LatLng[] corners = {
+                projection.fromScreenLocation(new Point(0, 0)),
+                projection.fromScreenLocation(new Point(map.getWidth(), 0)),
+                projection.fromScreenLocation(new Point(map.getWidth(), map.getHeight())),
+                projection.fromScreenLocation(new Point(0, map.getHeight()))
+        };
+
+        LatLng sw = corners[0];
+        LatLng ne = corners[0];
+        for (int i = 1; i < corners.length; i++) {
+            LatLng point = corners[i];
+            sw = new LatLng(Math.min(sw.latitude, point.latitude), Math.min(sw.longitude, point.longitude));
+            ne = new LatLng(Math.max(ne.latitude, point.latitude), Math.max(ne.longitude, point.longitude));
+        }
+        Log.d("LOCATION-SW", sw.toString());
+        Log.d("LOCATION-NE", ne.toString());
     }
 }
