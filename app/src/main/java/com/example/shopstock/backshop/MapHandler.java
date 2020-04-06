@@ -34,7 +34,6 @@ public class MapHandler {
    public void updateScreenArea(double[] newBottomLeft, double[] newTopRight,
                              Context context, final MapHandlerListener listener){
 
-        Log.i(TAG, "Launching an update of the area");
         bottomLeftCoordinateScreen = newBottomLeft;
         topRightCoordinateScreen = newTopRight;
 
@@ -48,7 +47,6 @@ public class MapHandler {
             double deltaLong = newTopRight[0] - newBottomLeft[0];
 
             if(deltaLat <= 0 || deltaLong <= 0){
-               Log.e(TAG, "The difference in latitude and longitude for the phone screen was not positive");
                listener.onFailure(false);
                return;
             }
@@ -61,14 +59,11 @@ public class MapHandler {
             topRightCoordinateData[0] = topRightCoordinateScreen[0] + latExpand;
             topRightCoordinateData[1] = topRightCoordinateScreen[1] + longExpand;
 
-            Log.d(TAG, "Launching the api method");
             ShopstockAPIHandler.updateStoresInArea(bottomLeftCoordinateData, topRightCoordinateData,
                     context, new ShopstockListener() {
                         @Override
                         public void onSuccess(String json) {
-                            Log.e(TAG, "Success inside MapHandler");
                             storesInArea = ShopstockAPIHandler.parseIntoStores(json);
-                            Log.d(TAG, "The number of stores from the request: " + storesInArea.length);
                             listener.onSuccess();
                         }
 
