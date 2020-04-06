@@ -32,7 +32,7 @@ public class MapHandler {
     // Updating the stores in the area based on a new area displayed in the screen
     // Brute Force w/Overwrites, improve in the future
    public void updateScreenArea(double[] newBottomLeft, double[] newTopRight,
-                             final MapHandlerListener listener, Context context){
+                             Context context, final MapHandlerListener listener){
 
         Log.i(TAG, "Launching an update of the area");
         bottomLeftCoordinateScreen = newBottomLeft;
@@ -58,15 +58,18 @@ public class MapHandler {
 
             bottomLeftCoordinateData[0] = bottomLeftCoordinateScreen[0] - latExpand;
             bottomLeftCoordinateData[1] = bottomLeftCoordinateScreen[1] - longExpand;
-            topRightCoordinateData[0] = bottomLeftCoordinateScreen[0] + latExpand;
-            topRightCoordinateData[1] = bottomLeftCoordinateScreen[1] + longExpand;
+            topRightCoordinateData[0] = topRightCoordinateScreen[0] + latExpand;
+            topRightCoordinateData[1] = topRightCoordinateScreen[1] + longExpand;
 
+            Log.d(TAG, "Launching the api method");
             ShopstockAPIHandler.updateStoresInArea(bottomLeftCoordinateData, topRightCoordinateData,
                     context, new ShopstockListener() {
                         @Override
                         public void onSuccess(String json) {
-                           storesInArea = ShopstockAPIHandler.parseIntoStores(json);
-                           listener.onSuccess();
+                            Log.e(TAG, "Success inside MapHandler");
+                            storesInArea = ShopstockAPIHandler.parseIntoStores(json);
+                            Log.d(TAG, "The number of stores from the request: " + storesInArea.length);
+                            listener.onSuccess();
                         }
 
                         @Override
@@ -75,6 +78,8 @@ public class MapHandler {
                             Log.e(TAG, "Failure to pull store information");
                         }
                     });
+        }else{
+            listener.onSuccess();
         }
    }
 

@@ -43,6 +43,7 @@ public class ShopstockAPIHandler {
                 + String.valueOf(bottom_left_coordinate[1]) + "&long_2="
                 + String.valueOf(top_right_coordinate[1]);
 
+        Log.e(TAG, methodRequest);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, methodRequest,
                 new Response.Listener<String>() {
                     @Override

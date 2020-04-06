@@ -61,6 +61,10 @@ public class Store {
                 && items != null && items.equals(s.items);
     }
 
+    public String toString(){
+       return "\nName: " + this.storeName + "\n" + "Address: " + this.storeAddress;
+    }
+
     // Getter methods
     public String getStoreAddress(){return storeAddress;}
     public String getStoreName(){return storeName;}
