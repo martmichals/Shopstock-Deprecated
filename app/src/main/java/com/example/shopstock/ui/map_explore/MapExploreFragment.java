@@ -28,6 +28,7 @@ import com.google.android.gms.maps.Projection;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 
@@ -121,7 +122,6 @@ public class MapExploreFragment extends Fragment implements  OnMapReadyCallback,
     @Override
     public void onCameraIdle() {
         Projection projection = googleMap.getProjection();
-        Log.d("LOCATION", projection.toString());
 
         LatLng[] corners = {
                 projection.fromScreenLocation(new Point(0, 0)),
@@ -147,7 +147,11 @@ public class MapExploreFragment extends Fragment implements  OnMapReadyCallback,
             public void onSuccess() {
                ArrayList<Store> storesOnScreen = mapHandler.getStoresOnScreen();
                for(int i = 0; i < storesOnScreen.size(); i++){
+                   Store store = storesOnScreen.get(i);
+                   LatLng location = new LatLng(store.getCoordinates()[0], store.getCoordinates()[1]);
+                   googleMap.addMarker(new MarkerOptions().position(location).title(store.getStoreName()).snippet(""));
                    Log.d(TAG, storesOnScreen.get(i).toString());
+
                }
             }
 
