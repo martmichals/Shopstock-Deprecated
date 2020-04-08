@@ -16,10 +16,10 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.shopstock.R;
-import com.example.shopstock.RecordTripActivity;
 import com.example.shopstock.backshop.MapHandler;
 import com.example.shopstock.backshop.MapHandlerListener;
 import com.example.shopstock.backshop.Store;
+import com.example.shopstock.StoreInfoInteractActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -83,7 +83,7 @@ public class MapExploreFragment extends Fragment implements  OnMapReadyCallback,
             googleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
                 @Override
                 public void onInfoWindowClick(Marker marker) {
-                    Intent intent = new Intent(getActivity(), RecordTripActivity.class);
+                    Intent intent = new Intent(getActivity(), StoreInfoInteractActivity.class);
                     intent.putExtra("storeName",  marker.getTitle());
                     startActivity(intent);
                 }

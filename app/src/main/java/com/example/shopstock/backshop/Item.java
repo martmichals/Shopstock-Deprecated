@@ -29,14 +29,20 @@ public class Item {
        return false;
     }
 
-    // Setter
-    public void setConfidence(double level) {
-        confidence = level;
-    }
-
-    // to string method for testing
     public String toString() {
         return itemName + ": ID " + itemID + ", Category " + categoryID + " \n";
     }
 
+    // Setter and Getter Methods
+    public void setConfidence(double level) {
+        confidence = level;
+    }
+
+    public double getConfidence() {
+        return confidence;
+    }
+
+    public String getItemName(){
+        return itemName;
+    }
 }

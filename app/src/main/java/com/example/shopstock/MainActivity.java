@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void goRecordTripActivity(){
-        Intent intent = new Intent(this,  RecordTripActivity.class);
+        Intent intent = new Intent(this,  StoreInfoInteractActivity.class);
         startActivity(intent);
     }
 
