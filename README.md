@@ -3,7 +3,7 @@
 An app developed in the midst of the COVID-19 pandemic. Uses user-reported data in order to provide out-of-stock data on stores in the
 United States. Meant to limit unnecessary exposure to others in supermarkets by enabling users to ensure the product they are looking for is in stock.<br>
 
--- Still in active development --<br>
+-- Project Halted. Development in Shopstock repo. Shift to Flutter. --<br>
 
 
 <h2>App Setup</h2>
